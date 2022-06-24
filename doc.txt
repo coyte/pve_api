@@ -1,0 +1,34 @@
+
+This script is using the API system available with proxmox 6.7 if I remember correctly (Available in version 7 that's for sure).
+
+What you need to feed is the host info and API credentials.
+pve="HOST_FQDN_OR_IP"
+node="HOSTID"
+port=":8006"
+vmid="VMID"
+apiu="user@realm"
+apip="USER_PASSWORD"
+
+First, you need to create an account to use the API system.
+Datacenter > Permissions > API Tokens
+then add your user. this is your API credentials.
+https://pve.proxmox.com/wiki/Proxmox_VE_API
+
+The script is creating a ticket to run an action.
+The action is defined by $url_end
+url_end="nodes/$node/qemu/$vmid/status/stop" (in this case that action will stop the VM $vmid)
+
+If your API user has the proper permission you can run whatever you want as long as it is listed here:
+https://pve.proxmox.com/pve-docs/api-viewer/index.html
+another example: nodes/{node}/status/reboot (this will reboot your host)
+
+the base URL for your API is always the same https://HOSTIP:8006/api2/json
+It is what comes after that will tell the system what it has to do.
+
+The last bit will basically grab in the ticket what is required to be able to trigger the API action.
+
+In summary, this is how it works. Your API user allows you to get a ticket, this ticket will have the necessary information to trigger the API action requested as long as your user has the right permissions.
+
+You can run this from any device. I use it on my laptop to wake up/reboot/shut down VM on my workstation.
+But you can also run this from your cellphone. With an app sending HTTP POST requests.
+It's a little bit more complicated because you need a token. But it's working fine.
