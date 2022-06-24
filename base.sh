@@ -4,15 +4,6 @@
 # for the proxmox community
 # By veeh, enjoy
 
-#Host info
-pve="HOST_FQDN_OR_IP"
-node="HOSTID"
-port=":8006"
-vmid="VMID"
-
-#API info
-apiu="user@realm"
-# apip="USER_PASSWORD" ###Set as env_var
 url_base="https://$pve$port/api2/json"
 # this is where you put what ever you want do
 # https://pve.proxmox.com/pve-docs/api-viewer/
