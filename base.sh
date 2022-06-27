@@ -15,7 +15,7 @@ urlqr="$url_base/$url_end"
 urltk="$url_base/access/ticket"
 
 ticket=`curl --insecure --data "username=$apiu&password=$apip" $urltk`
-#curl --insecure --data "username=root@pam&password=TAspect01" https://pve.teekens.info:8006/api2/json/access/ticket | grep jq
+#curl --insecure --data "username=root@pam&password=XXXXXXX" https://pve.teekens.info:8006/api2/json/access/ticket | grep jq
 echo 'ticket curled: '$ticket
 
 # Grab cookie and token from the ticket data
